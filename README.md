@@ -7,7 +7,7 @@ A vaga é para Desenvolvedor, temos vagas com diversos níveis de senioridade e 
 Se você for aprovado nesta etapa, será convidado para uma entrevista final com nosso time de especialistas.
 
 ### Desafio Técnico
-  Nós da Conductor trabalhamos com meios de pagamento e nada melhor que um bom sistema para gestão de contas:
+  Nós trabalhamos com meios de pagamento e nada melhor que um bom sistema para gestão de contas:
   
   - Pré-requisitos:
     ```
@@ -74,7 +74,7 @@ Se você for aprovado nesta etapa, será convidado para uma entrevista final com
 
 ### Instruções
       1. Faça o fork do desafio;
-      2. Crie um repositório privado no bitbucket para o projeto e adicione como colaborador o usuário conductordev;
+      2. Crie um repositório privado no bitbucket para o projeto e adicione como colaborador o usuário artinf0;
       3. Desenvolva. Você terá até 7 (sete) dias a partir da data do envio do desafio; 
       4. Após concluir seu trabalho faça um push; 
       5. Envie um e-mail ao RH Conductor notificando a finalização do desafio para validação.
