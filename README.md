@@ -74,7 +74,5 @@ Se você for aprovado nesta etapa, será convidado para uma entrevista final com
 
 ### Instruções
       1. Faça o fork do desafio;
-      2. Crie um repositório privado no bitbucket para o projeto e adicione como colaborador o usuário artinf0;
-      3. Desenvolva. Você terá até 7 (sete) dias a partir da data do envio do desafio; 
-      4. Após concluir seu trabalho faça um push; 
-      5. Envie um e-mail para arthur.azevedo@dock.tech notificando a finalização do desafio para validação.
+      2. Desenvolva. Você terá até 7 (sete) dias a partir da data do envio do desafio; 
+      3. Envie um e-mail para arthur.azevedo@dock.tech notificando a finalização do desafio e o link do repositório para validação.
