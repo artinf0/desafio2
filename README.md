@@ -74,5 +74,5 @@ Se você for aprovado nesta etapa, será convidado para uma entrevista final com
 
 ### Instruções
       1. Faça o fork do desafio;
-      2. Desenvolva. Você terá até 7 (sete) dias a partir da data do envio do desafio; 
+      2. Desenvolva. Você terá até 3 (três) dias a partir da data do envio do desafio; 
       3. Envie um e-mail para arthur.azevedo@dock.tech notificando a finalização do desafio e o link do repositório para validação.
