@@ -28,9 +28,9 @@ public enum TipoConta {
 			return null;
 		}
 		
-		for(TipoConta value: TipoConta.values()) {
-			if(value.getCodigo() == code) {
-				return value;
+		for(TipoConta valor: TipoConta.values()) {
+			if(valor.getCodigo() == code) {
+				return valor;
 			}
 		}
 		
