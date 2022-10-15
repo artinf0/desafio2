@@ -4,26 +4,26 @@ import java.time.LocalDate;
 
 public class Pessoa {
 	
-	private Long id;
+	private Long idPessoa;
 	private String nome;
 	private String cpf;
 	private LocalDate dataNascimento;
 	
-	public Pessoa(Long id, String nome, String cpf, LocalDate dataNascimento) {
-		this.id = id;
+	public Pessoa(Long idPessoa, String nome, String cpf, LocalDate dataNascimento) {
+		this.idPessoa = idPessoa;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 	}
 	
-	public Long getId() {
-		return id;
+	public Long getIdPessoa() {
+		return idPessoa;
 	}
-	
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setIdPessoa(Long idPessoa) {
+		this.idPessoa = idPessoa;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
