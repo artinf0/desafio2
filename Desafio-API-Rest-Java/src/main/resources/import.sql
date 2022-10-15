@@ -1,0 +1,10 @@
+INSERT INTO pessoas(nome,cpf,data_nascimento) VALUES ('Luan Barros','43415300544','2001-06-16');
+INSERT INTO pessoas(nome,cpf,data_nascimento) VALUES ('Henry Neves','37804948760','1995-06-14');
+INSERT INTO pessoas(nome,cpf,data_nascimento) VALUES ('Emily dos Santos','23094234160','1978-06-14');
+INSERT INTO pessoas(nome,cpf,data_nascimento) VALUES ('Levi Cruz','37894467189','1989-06-10');
+INSERT INTO pessoas(nome,cpf,data_nascimento) VALUES ('Jorge Caio Campos','11536846759','2003-06-04');
+INSERT INTO pessoas(nome,cpf,data_nascimento) VALUES ('Luana Medeiros','96842842255','1997-04-05');
+INSERT INTO pessoas(nome,cpf,data_nascimento) VALUES ('Louise Vieira','80502712694','2002-06-03');
+INSERT INTO pessoas(nome,cpf,data_nascimento) VALUES ('Breno Mendes','07499362159','1999-06-02');
+INSERT INTO pessoas(nome,cpf,data_nascimento) VALUES ('Daniel Costa','19629216892','1990-05-22');
+INSERT INTO pessoas(nome,cpf,data_nascimento) VALUES ('Liz Barbosa','06507860174','1977-05-18');
