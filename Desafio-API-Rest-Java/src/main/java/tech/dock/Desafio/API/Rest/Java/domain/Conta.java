@@ -1,9 +1,9 @@
-package tech.dock.Desafio.API.Rest.Java.domain.conta;
+package tech.dock.Desafio.API.Rest.Java.domain;
 
 import java.time.LocalDate;
 
 public class Conta {
-
+	
 	private Long idConta;
 	private Double saldo;
 	private Double limiteSaqueDiario;
@@ -57,5 +57,4 @@ public class Conta {
 	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	
 }
