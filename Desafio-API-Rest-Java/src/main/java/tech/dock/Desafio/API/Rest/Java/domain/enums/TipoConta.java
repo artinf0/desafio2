@@ -22,14 +22,14 @@ public enum TipoConta {
 		return descricao;
 	}
 	
-	public static TipoConta valueOf(Integer code) {
+	public static TipoConta valueOf(Integer codigo) {
 		
-		if(code == null) {
+		if(codigo == null) {
 			return null;
 		}
 		
 		for(TipoConta valor: TipoConta.values()) {
-			if(valor.getCodigo() == code) {
+			if(valor.getCodigo() == codigo) {
 				return valor;
 			}
 		}
