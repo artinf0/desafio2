@@ -4,7 +4,7 @@ public enum TipoConta {
 	
 	CONTA_POUPANCA(0, "Conta poupança"),
 	CONTA_SALARIO(1, "Conta salário"),
-	CONTA_CORRENTE(3, "Conta corrente");
+	CONTA_CORRENTE(2, "Conta corrente");
 	
 	private Integer codigo;
 	private String descricao;
