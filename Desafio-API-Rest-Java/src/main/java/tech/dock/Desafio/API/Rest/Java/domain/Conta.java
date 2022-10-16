@@ -48,7 +48,7 @@ public class Conta {
 		this.flagAtivo = flagAtivo;
 		this.dataCriacao = dataCriacao;
 		this.pessoa = pessoa;
-		this.tipoConta = (tipoConta == null) ? null : tipoConta.getCodigo();
+		setTipoConta(tipoConta);
 	}
 
 	public Long getIdConta() {
@@ -108,7 +108,9 @@ public class Conta {
 	}
 	
 	public void setTipoConta(TipoConta tipoConta) {
-		this.tipoConta = tipoConta.getCodigo();
+		if(tipoConta != null) {
+			this.tipoConta = tipoConta.getCodigo();
+		}
 	}
 
 	@Override
