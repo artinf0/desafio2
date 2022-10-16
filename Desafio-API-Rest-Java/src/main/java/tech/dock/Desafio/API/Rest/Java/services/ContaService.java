@@ -1,6 +1,10 @@
 package tech.dock.Desafio.API.Rest.Java.services;
 
 import java.time.LocalDate;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,12 +13,17 @@ import tech.dock.Desafio.API.Rest.Java.domain.Conta;
 import tech.dock.Desafio.API.Rest.Java.domain.enums.TipoConta;
 import tech.dock.Desafio.API.Rest.Java.dto.ContaSaldoDTO;
 import tech.dock.Desafio.API.Rest.Java.repositories.ContaRepository;
+import tech.dock.Desafio.API.Rest.Java.repositories.TransacaoRepository;
+import tech.dock.Desafio.API.Rest.Java.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class ContaService {
 	
 	@Autowired
 	private ContaRepository contaRepository;
+	
+	@Autowired
+	private TransacaoRepository transacaoRepository;
 	
 	public Conta criarConta(Conta obj) {
 		obj.setIdConta(null);
@@ -31,27 +40,50 @@ public class ContaService {
 		return contaRepository.getReferenceById(idConta);
 	}
 	
+	public Conta retornaContaPorId(Long idConta) {
+		Optional<Conta> obj = contaRepository.findById(idConta);
+		return obj.orElseThrow(() -> new ResourceNotFoundException(idConta));
+	}
+	
+	@Transactional
 	public Conta depositaNaConta(Long idConta, Conta novoValor) {
-		Conta entidade = retornaConta(idConta);
-		updateDeposito(entidade, novoValor);
-		return contaRepository.save(entidade);
+		try {
+			Conta entidade = retornaConta(idConta);
+			updateDeposito(entidade, novoValor);
+			/*
+			LocalDate hoje = LocalDate.now();
+			
+			Transacao transacao = new Transacao(null, novoValor.getSaldo(), hoje, novoValor);
+			entidade.getTransacoes().add(transacao);
+			transacaoRepository.save(transacao);
+			*/
+			return contaRepository.save(entidade);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(idConta);
+		}
+		
 	}
 	
 	public ContaSaldoDTO retornaSaldo(Long idConta) {
-		Conta conta = contaRepository.getReferenceById(idConta);
+		Conta conta = retornaContaPorId(idConta);
 		ContaSaldoDTO contaSaldoDTO = new ContaSaldoDTO(conta);
 		return contaSaldoDTO;
 	}
 	
 	public Conta saqueNaConta(Long idConta, Conta novoValor) {
-		Conta entidade = retornaConta(idConta);
+		try {
+			Conta entidade = retornaConta(idConta);
+			
+			updateSaque(entidade, novoValor);
+			return contaRepository.save(entidade);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(idConta);
+		}
 		
-		updateSaque(entidade, novoValor);
-		return contaRepository.save(entidade);
 	}
 	
 	public Conta bloqueiaConta(Long idConta) {
-		Conta entidade = retornaConta(idConta);
+		Conta entidade = retornaContaPorId(idConta);
 		
 		updateFlagAtivo(entidade);
 		return contaRepository.save(entidade);
