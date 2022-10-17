@@ -15,6 +15,6 @@ cd backend
 ./mvnw spring-boot:run
 ```
 
-##Importar a collection abaixo no Postman:
+## Importar a collection abaixo no Postman:
 
-![Web 1][(https://github.com/gabrielribeirojb/itens-para-readme/blob/main/assets/03-sds3/semana-dev-3-app.jpg)](https://github.com/gabrielribeirojb/itens-para-readme/tree/main/desafio-dock)
+![Web 1][(https://github.com/gabrielribeirojb/itens-para-readme/tree/main/desafio-dock)]
