@@ -2,7 +2,7 @@
 # Como executar o projeto
 
 ## Back end
-Pré-requisitos: Java 11
+Pré-requisitos: Java 8
 
 ```bash
 # clonar repositório
@@ -14,3 +14,7 @@ cd backend
 # executar o projeto
 ./mvnw spring-boot:run
 ```
+
+##Importar a collection abaixo no Postman:
+
+![Web 1][(https://github.com/gabrielribeirojb/itens-para-readme/blob/main/assets/03-sds3/semana-dev-3-app.jpg)](https://github.com/gabrielribeirojb/itens-para-readme/tree/main/desafio-dock)
