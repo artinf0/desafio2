@@ -8,4 +8,5 @@ import tech.dock.Desafio.API.Rest.Java.domain.Conta;
 @Repository
 public interface ContaRepository extends JpaRepository<Conta, Long>{
 
+	
 }

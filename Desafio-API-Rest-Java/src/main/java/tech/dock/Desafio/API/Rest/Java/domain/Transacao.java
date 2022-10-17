@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "transacoes")
 public class Transacao {
@@ -22,6 +24,7 @@ public class Transacao {
 	
 	@ManyToOne
 	@JoinColumn(name = "idConta")
+	@JsonIgnore
 	private Conta conta;
 	
 	public Transacao() {
@@ -66,6 +69,13 @@ public class Transacao {
 
 	public void setConta(Conta conta) {
 		this.conta = conta;
+	}
+	
+	public String toString() {
+		return "ID: " + idTransacao+
+		", VALOR: " + valor
+		+", DataTransacao: " + dataTransacao
+		+", IDCONTA: "+ conta;
 	}
 
 	@Override
