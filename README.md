@@ -18,3 +18,5 @@ cd backend
 ## Importar a collection abaixo no Postman:
 
 (https://github.com/gabrielribeirojb/itens-para-readme/tree/main/desafio-dock)
+
+### Rodar cada um dos paths disponíveis na collection e partir pro abraço :)
