@@ -113,10 +113,6 @@ public class Conta {
 			this.tipoConta = tipoConta.getCodigo();
 		}
 	}
-	
-	public String toString() {
-		return "CONTA: " + idConta;
-	}
 
 	@Override
 	public int hashCode() {

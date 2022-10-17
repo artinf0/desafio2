@@ -53,6 +53,7 @@ public class ContaService {
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException(idConta);
 		}
+		
 	}
 	
 	public ContaSaldoDTO retornaSaldo(Long idConta) {
@@ -62,14 +63,20 @@ public class ContaService {
 	}
 	
 	public Conta saqueNaConta(Long idConta, Conta novoValor) {
-		Conta entidade = retornaConta(idConta);
-		
-		updateSaque(entidade, novoValor);
-		return contaRepository.save(entidade);
+		try {
+			Conta entidade = retornaConta(idConta);
+			
+			updateSaque(entidade, novoValor);
+			Transacao novaTransacao = new Transacao(null, -novoValor.getSaldo(), LocalDate.now(), entidade);
+			entidade.getTransacoes().add(novaTransacao);
+			return contaRepository.save(entidade);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(idConta);
+		}
 	}
 	
 	public Conta bloqueiaConta(Long idConta) {
-		Conta entidade = retornaConta(idConta);
+		Conta entidade = retornaContaPorId(idConta);
 		
 		updateFlagAtivo(entidade);
 		return contaRepository.save(entidade);

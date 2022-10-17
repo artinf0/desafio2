@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import tech.dock.Desafio.API.Rest.Java.domain.Transacao;
 import tech.dock.Desafio.API.Rest.Java.repositories.TransacaoRepository;
-
 @Service
 public class TransacaoService {
 	
@@ -25,4 +24,5 @@ public class TransacaoService {
 		return transacaoRepository.findTransacoesPaginado(min, max, pageable);
 
 	}
+	
 }
