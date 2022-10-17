@@ -1,6 +1,7 @@
 package tech.dock.Desafio.API.Rest.Java.controllers;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import tech.dock.Desafio.API.Rest.Java.domain.Conta;
+import tech.dock.Desafio.API.Rest.Java.domain.Transacao;
 import tech.dock.Desafio.API.Rest.Java.dto.ContaSaldoDTO;
-import tech.dock.Desafio.API.Rest.Java.dto.ContaTransacoesDTO;
 import tech.dock.Desafio.API.Rest.Java.services.ContaService;
 
 @RestController
@@ -51,10 +52,10 @@ public class ContaController {
 	}
 	
 	@GetMapping(value = "/{idConta}/transacoes")
-	public ResponseEntity<ContaTransacoesDTO> retornaTransacoes(@PathVariable Long idConta){
-		Conta conta = contaService.retornaConta(idConta);
-		ContaTransacoesDTO contaTransacoesDTO = new ContaTransacoesDTO(conta);
-		return ResponseEntity.ok().body(contaTransacoesDTO);
+	public ResponseEntity<List<Transacao>> retornaTransacoes(@PathVariable Long idConta){
+		Conta conta = contaService.retornaContaPorId(idConta);
+		List<Transacao> transacoes = conta.getTransacoes();
+		return ResponseEntity.ok().body(transacoes);
 	}
 	
 	@PutMapping(value = "/{idConta}/bloquear")

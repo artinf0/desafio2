@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +28,7 @@ public class Conta {
 	@JoinColumn(name = "idPessoa", referencedColumnName = "idPessoa")
 	private Pessoa pessoa;
 	
-	@OneToMany(mappedBy = "conta")
+	@OneToMany(mappedBy = "conta", cascade = CascadeType.ALL)
 	private List<Transacao> transacoes = new ArrayList<>();
 	
 	private Double saldo;
@@ -111,6 +112,10 @@ public class Conta {
 		if(tipoConta != null) {
 			this.tipoConta = tipoConta.getCodigo();
 		}
+	}
+	
+	public String toString() {
+		return "CONTA: " + idConta;
 	}
 
 	@Override

@@ -1,14 +1,19 @@
 package tech.dock.Desafio.API.Rest.Java.services;
 
 import java.time.LocalDate;
+import java.util.Optional;
+
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tech.dock.Desafio.API.Rest.Java.domain.Conta;
-import tech.dock.Desafio.API.Rest.Java.domain.enums.TipoConta;
+import tech.dock.Desafio.API.Rest.Java.domain.Transacao;
 import tech.dock.Desafio.API.Rest.Java.dto.ContaSaldoDTO;
 import tech.dock.Desafio.API.Rest.Java.repositories.ContaRepository;
+import tech.dock.Desafio.API.Rest.Java.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class ContaService {
@@ -31,14 +36,27 @@ public class ContaService {
 		return contaRepository.getReferenceById(idConta);
 	}
 	
+	public Conta retornaContaPorId(Long idConta) {
+		Optional<Conta> obj = contaRepository.findById(idConta);
+		return obj.orElseThrow(() -> new ResourceNotFoundException(idConta));
+	}
+	
+	@Transactional
 	public Conta depositaNaConta(Long idConta, Conta novoValor) {
-		Conta entidade = retornaConta(idConta);
-		updateDeposito(entidade, novoValor);
-		return contaRepository.save(entidade);
+		try {
+			Conta entidade = retornaContaPorId(idConta);
+			updateDeposito(entidade, novoValor);
+			Transacao novaTransacao = new Transacao(null, novoValor.getSaldo(), LocalDate.now(), entidade);
+			entidade.getTransacoes().add(novaTransacao);
+			
+			return contaRepository.save(entidade);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(idConta);
+		}
 	}
 	
 	public ContaSaldoDTO retornaSaldo(Long idConta) {
-		Conta conta = contaRepository.getReferenceById(idConta);
+		Conta conta = retornaContaPorId(idConta);
 		ContaSaldoDTO contaSaldoDTO = new ContaSaldoDTO(conta);
 		return contaSaldoDTO;
 	}
@@ -56,7 +74,7 @@ public class ContaService {
 		updateFlagAtivo(entidade);
 		return contaRepository.save(entidade);
 	}
-
+	
 	private void updateDeposito(Conta entidade, Conta novoValor) {
 		Double saldoAtual = entidade.getSaldo();
 		entidade.setSaldo(saldoAtual += novoValor.getSaldo());
@@ -64,12 +82,8 @@ public class ContaService {
 	
 	private void updateSaque(Conta entidade, Conta novoValor) {
 		Double saldoAtual = entidade.getSaldo();
-		TipoConta tipoConta = entidade.getTipoConta();
-		if(entidade.getSaldo() + novoValor.getSaldo() < 0.0 && (tipoConta == TipoConta.CONTA_SALARIO || tipoConta == TipoConta.CONTA_POUPANCA)) {
-			throw new IllegalArgumentException("Não se pode sacar mais do que o saldo atual para esse tipo de conta");
-		} else {
-			entidade.setSaldo(saldoAtual -= novoValor.getSaldo());
-		}
+		Double valorSacado = -novoValor.getSaldo();
+		entidade.setSaldo(saldoAtual += valorSacado);
 	}
 	
 	private void updateFlagAtivo(Conta entidade) {
