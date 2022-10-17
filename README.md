@@ -17,4 +17,4 @@ cd backend
 
 ## Importar a collection abaixo no Postman:
 
-![Web 1][(https://github.com/gabrielribeirojb/itens-para-readme/tree/main/desafio-dock)]
+(https://github.com/gabrielribeirojb/itens-para-readme/tree/main/desafio-dock)
