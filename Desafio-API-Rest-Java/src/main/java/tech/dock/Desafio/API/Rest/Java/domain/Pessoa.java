@@ -8,6 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Classe que representa a entidade Pessoa.
+ * @author gabrielribeirojb
+ *
+ */
+
+
 @Entity
 @Table(name = "pessoas")
 public class Pessoa {

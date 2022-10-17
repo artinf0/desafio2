@@ -12,6 +12,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Classe que representa a entidade Transacao.
+ * @author gabrielribeirojb
+ *
+ */
+
 @Entity
 @Table(name = "transacoes")
 public class Transacao {

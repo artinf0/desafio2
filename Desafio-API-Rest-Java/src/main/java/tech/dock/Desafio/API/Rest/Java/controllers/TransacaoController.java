@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import tech.dock.Desafio.API.Rest.Java.domain.Transacao;
 import tech.dock.Desafio.API.Rest.Java.services.TransacaoService;
 
+/**
+ * Classe respnsável por gerar paths na url para operações relacionadas a transações.
+ * @author gabrielribeirojb
+ *
+ */
+
 @RestController
 @RequestMapping(value = "/extratos")
 public class TransacaoController {
@@ -18,6 +24,13 @@ public class TransacaoController {
 	@Autowired
 	private TransacaoService transacaoService;
 	
+	/**
+	 * Retornará um extrato de transações em determinado período.
+	 * @param dataMin
+	 * @param dataMax
+	 * @param pageable
+	 * @return
+	 */
 	@GetMapping
 	public Page<Transacao> pesquisaTransacoesPorData(
 			@RequestParam (value="dataMin", defaultValue = "") String dataMin,
