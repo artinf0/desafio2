@@ -19,6 +19,12 @@ import tech.dock.Desafio.API.Rest.Java.domain.Transacao;
 import tech.dock.Desafio.API.Rest.Java.dto.ContaSaldoDTO;
 import tech.dock.Desafio.API.Rest.Java.services.ContaService;
 
+/**
+ * Classe respnsável por gerar paths na url para operações relacionadas a contas.
+ * @author gaabr
+ *
+ */
+
 @RestController
 @RequestMapping(value = "/contas")
 public class ContaController {

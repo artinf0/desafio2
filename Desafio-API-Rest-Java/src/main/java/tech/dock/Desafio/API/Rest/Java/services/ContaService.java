@@ -15,6 +15,12 @@ import tech.dock.Desafio.API.Rest.Java.dto.ContaSaldoDTO;
 import tech.dock.Desafio.API.Rest.Java.repositories.ContaRepository;
 import tech.dock.Desafio.API.Rest.Java.services.exceptions.ResourceNotFoundException;
 
+/**
+ * Classe que fará operações com a conta na camada de serviço.
+ * @author gabrielribeirojb
+ *
+ */
+
 @Service
 public class ContaService {
 	
@@ -32,10 +38,20 @@ public class ContaService {
 		return obj;
 	}
 	
+	/**
+	 * Retorna uma referência de uma conta no banco de dados.
+	 * @param idConta
+	 * @return
+	 */
 	public Conta retornaConta(Long idConta){
 		return contaRepository.getReferenceById(idConta);
 	}
 	
+	/**
+	 * Retorna uma conta do banco de dados.
+	 * @param idConta
+	 * @return
+	 */
 	public Conta retornaContaPorId(Long idConta) {
 		Optional<Conta> obj = contaRepository.findById(idConta);
 		return obj.orElseThrow(() -> new ResourceNotFoundException(idConta));
@@ -82,17 +98,36 @@ public class ContaService {
 		return contaRepository.save(entidade);
 	}
 	
+	
+	/**
+	 * Método auxiliar que determina um novo valor no saldo quando há um depósito, 
+	 * fazendo a comparação entre o saldo atual e o novo saldo.
+	 * @param entidade
+	 * @param novoValor
+	 */
 	private void updateDeposito(Conta entidade, Conta novoValor) {
 		Double saldoAtual = entidade.getSaldo();
 		entidade.setSaldo(saldoAtual += novoValor.getSaldo());
 	}
 	
+	/**
+	 * Método auxiliar que determina um novo valor no saldo quando há um saque, 
+	 * fazendo a comparação entre o saldo atual e o novo saldo.
+	 * @param entidade
+	 * @param novoValor
+	 */
 	private void updateSaque(Conta entidade, Conta novoValor) {
 		Double saldoAtual = entidade.getSaldo();
 		Double valorSacado = -novoValor.getSaldo();
 		entidade.setSaldo(saldoAtual += valorSacado);
 	}
 	
+	/**
+	 * Método auxiliar que determina um novo valor ao campo flagAtivo de uma Conta quando ela
+	 * for bloqueada.
+	 * @param entidade
+	 * @param novoValor
+	 */
 	private void updateFlagAtivo(Conta entidade) {
 		entidade.setFlagAtivo(false);
 	}

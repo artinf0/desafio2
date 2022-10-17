@@ -1,5 +1,10 @@
 package tech.dock.Desafio.API.Rest.Java.domain.enums;
 
+/**
+ * Classe que representa o tipo enumerado TipoConta
+ * @author gabrielribeirojb
+ *
+ */
 public enum TipoConta {
 	
 	CONTA_POUPANCA(0, "Conta poupança"),

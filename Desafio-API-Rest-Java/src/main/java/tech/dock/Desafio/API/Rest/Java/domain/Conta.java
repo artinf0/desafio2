@@ -16,6 +16,12 @@ import javax.persistence.Table;
 
 import tech.dock.Desafio.API.Rest.Java.domain.enums.TipoConta;
 
+/**
+ * Classe que representa a entidade Conta.
+ * @author gabrielribeirojb
+ *
+ */
+
 @Entity
 @Table(name = "contas")
 public class Conta {

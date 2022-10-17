@@ -9,6 +9,13 @@ import org.springframework.stereotype.Service;
 
 import tech.dock.Desafio.API.Rest.Java.domain.Transacao;
 import tech.dock.Desafio.API.Rest.Java.repositories.TransacaoRepository;
+
+/**
+ *  Classe que fará operações com a transação na camada de serviço.
+ * @author gabrielribeirojb
+ *
+ */
+
 @Service
 public class TransacaoService {
 	
